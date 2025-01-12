@@ -9,7 +9,7 @@ export default {
     extend: {
       fontFamily: {
        poppins: [ "Poppins", "serif"],
-       lato:["Lato", "serif"],
+       montserrat:["Montserrat", "serif"],
       },
     },
   },

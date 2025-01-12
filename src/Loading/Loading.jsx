@@ -3,7 +3,7 @@ import loading from "../assets/Lottie/loading.json";
 import Lottie from "lottie-react";
 function Loading() {
   return (
-    <div className="flex justify-center items-center text-center">
+    <div className="flex justify-center items-center">
       <Lottie
         animationData={loading}
         className="w-32"
