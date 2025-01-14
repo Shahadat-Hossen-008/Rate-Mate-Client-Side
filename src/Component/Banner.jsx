@@ -22,13 +22,13 @@ export default function Banner() {
         centeredSlides={true}
         loop={true}
         autoplay={{
-          delay: 5000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
         className='mySwiper'
       >

@@ -1,128 +1,93 @@
-import Lottie from "lottie-react";
-import LoginLottie from "../../assets/Lottie/login.json";
-import  { useContext, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import { Button } from "@mui/material";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import AuthContext from "../../Context/AuthContext";
-import GoogleLogin from "../../Component/SocialLoginButton/GoogleButton";
+import { useTheme } from "@emotion/react";
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { useContext, useState } from "react";
+import {  MdVisibility, MdVisibilityOff } from "react-icons/md";
+import { Link } from "react-router-dom";
+import AuthProvider from "../../Context/AuthProvider";
 
 
 function Login() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const from = location?.state || '/';
-  console.log(location);
-  
-    const {signIn, setUser} = useContext(AuthContext);
-    const [seePassword, setSeePassword] = useState(true);
-    const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-    const onSubmit = (data) =>{
-        const email = data.email;
-        const password = data.password;
-        signIn(email, password)
-        .then(result =>{
-            const user = result.user;
-            setUser(user);
-            navigate(from)
-        })
-        .catch(error=>{
-            console.log(error.message);
-            
-        })
-        
-      }
+  const theme = useTheme();
+  const {setUser} = useContext(AuthProvider);
+  const [showPassword, setShowPassword] = useState();
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = (event) => event.preventDefault();
   return (
-    <div className="hero bg-base-100 min-h-screen py-20">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center w-[400px]">
-          <Lottie animationData={LoginLottie}></Lottie>
-        </div>
-        <div className="card bg-amber-50 w-full max-w-sm shadow-lg p-5">
-          <h1 className="text-2xl font-bold text-center font-poppins">
-            Login
-          </h1>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="card-body font-lato"
-          >
-            {/* email */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Enter a valid email",
-                  },
-                })}
-              />
-              {errors.email && (
-                <span className="text-red-500 text-sm">
-                  {errors.email.message}
-                </span>
-              )}
-            </div>
-            {/* password */}
-            <div className="form-control relative">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type={seePassword ? "password" : "text"}
+    <div>
+      <div></div>
+      <Container component="main" maxWidth="xs" className="shadow-lg p-20 mt-10">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {/* Title */}
+          <Typography component="h1" variant="h5">
+            Sign In
+          </Typography>
+          <Box component="form" sx={{ mt: 1 }}>
+            {/* Email Field */}
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type="email"
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            {/* Password Field */}
+            <FormControl variant="outlined" fullWidth required>
+              <TextField
+                margin="normal"
                 name="password"
-                placeholder="password"
-                className="input input-bordered"
-                {...register("password", {
-                  required: "Password is required",
-                  minLength: {
-                    value: 8,
-                    message: "Password must contain 8 character",
-                  },
-                  pattern: {
-                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                    message:
-                      "Password must include uppercase, lowercase, number, and special character",
-                  },
-                })}
+                label="Password"
+                type={showPassword ? "text" : "password"}
+                id="password"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <MdVisibilityOff /> : <MdVisibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
-              <button
-                onClick={() => setSeePassword(!seePassword)}
-                type="button"
-                className="absolute right-4 top-12 pt-1"
-              >
-                {seePassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
-              {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
-            </div>
-            <div className="form-control mt-6">
-              <Button
-                variant="contained"
-                type="submit"
-                className="btn btn-primary"
-              >
-               Sign In
-              </Button>
-            </div>
+            </FormControl>
+            {/* Sign In Button */}
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
             <p>
-              New to this website, Please <Link to={"/register"} className="text-blue-400">Register
-              </Link>
+              "Don't have an account? " <Link to="/register" className="text-blue-500">Sign Up</Link>
             </p>
-          </form>
-          <GoogleLogin></GoogleLogin>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Container>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 const Navbar = () => {
   
   return (
-    <div className="navbar bg-base-100 shadow-sm container px-4 mx-auto">
+    <div className="navbar bg-base-100 shadow-sm container px-4 w-11/12 mx-auto ">
       <div className="flex-1">
         <Link to="/" className="flex gap-2 items-center">
           <img className="w-14" src={logo} alt="logo" />
