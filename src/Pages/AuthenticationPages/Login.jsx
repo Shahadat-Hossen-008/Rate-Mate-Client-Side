@@ -12,15 +12,37 @@ import {
 import React, { useContext, useState } from "react";
 import {  MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { Link } from "react-router-dom";
-import AuthProvider from "../../Context/AuthProvider";
+
+import AuthContext from "../../Context/AuthContext";
 
 
 function Login() {
   const theme = useTheme();
-  const {setUser} = useContext(AuthProvider);
+  const {setUser, signIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState();
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (event) => event.preventDefault();
+  const handleLogin =(e)=>{
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+    .then(result =>{
+        const user = result.user;
+        setUser(user);
+        console.log(user);
+        
+        
+    })
+    .catch(error=>{
+        console.log(error.message);
+        
+    })
+    
+    
+    
+  }
   return (
     <div>
       <div></div>
@@ -36,7 +58,7 @@ function Login() {
           <Typography component="h1" variant="h5">
             Sign In
           </Typography>
-          <Box component="form" sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
             {/* Email Field */}
             <TextField
               margin="normal"
