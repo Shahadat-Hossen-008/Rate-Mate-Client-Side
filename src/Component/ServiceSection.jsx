@@ -2,6 +2,7 @@ import { Button, responsiveFontSizes } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react"
 import ServiceCard from "./Service Card/ServiceCard";
+import { Link } from "react-router-dom";
 
 
 function ServiceSection () {
@@ -29,7 +30,7 @@ useEffect(()=>{
       <h2 className="text-xl font-semibold ">
        Top 6 Services
       </h2>
-      <Button variant="outlined">See More</Button>
+      <Link to='/allServices'><Button variant="outlined">See More</Button></Link>
       </div>
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {

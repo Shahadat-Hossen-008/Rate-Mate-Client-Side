@@ -38,7 +38,7 @@ const ServiceCard = ({ service }) => {
 
       {/* View Details Button */}
       <div className="px-6 pb-4">
-        <Link to={`/service-details/${_id}`}>
+        <Link to={`/allServices/${_id}`}>
           <motion.button
             whileHover={{ scale: 1.1, backgroundColor: '#4CAF50', color: '#fff' }}
             whileTap={{ scale: 0.9 }}
