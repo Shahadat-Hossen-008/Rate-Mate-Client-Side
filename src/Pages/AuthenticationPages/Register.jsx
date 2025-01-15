@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash, FaRegCheckCircle, FaRegCircle } from "react-icons/fa
 import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
+import GoogleButton from "../../Component/SocialLoginButton/GoogleButton";
 
 function Register() {
   const{createUser, updateUserProfile, setUser} = useContext(AuthContext);
@@ -35,8 +36,8 @@ function Register() {
       const user = userCredential.user;
       updateUserProfile(name, photo)
       .then(()=>{
-        setUser(user)
-    //     navigate('/');
+        setUser(user);
+        navigate('/');
       })
       .catch(err=>{
         console.log(err.message)
@@ -50,7 +51,7 @@ function Register() {
   }
   return (
     <div className="hero bg-base-100 min-h-screen py-20">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+      <div className="hero-content flex-col lg:flex-row-reverse justify-center items-center">
         <div className="text-center w-[400px]">
           <Lottie animationData={registerLottie}></Lottie>
         </div>
@@ -178,7 +179,7 @@ function Register() {
             </div>
             <p>Already have an account, Please <Link to="/login" className="text-blue-400">Sign In</Link></p>
           </form>
-          
+          <GoogleButton></GoogleButton>
         </div>
       </div>
     </div>

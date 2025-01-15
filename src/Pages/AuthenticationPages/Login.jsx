@@ -11,14 +11,18 @@ import {
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import {  MdVisibility, MdVisibilityOff } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import AuthContext from "../../Context/AuthContext";
+import GoogleButton from "../../Component/SocialLoginButton/GoogleButton";
 
 
 function Login() {
   const theme = useTheme();
   const {setUser, signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state || "/";
   const [showPassword, setShowPassword] = useState();
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (event) => event.preventDefault();
@@ -31,7 +35,7 @@ function Login() {
     .then(result =>{
         const user = result.user;
         setUser(user);
-        console.log(user);
+        navigate(from ,{replace: true})
         
         
     })
@@ -109,6 +113,7 @@ function Login() {
             </p>
           </Box>
         </Box>
+        <GoogleButton></GoogleButton>
       </Container>
     </div>
   );
