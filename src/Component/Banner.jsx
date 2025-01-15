@@ -16,7 +16,7 @@ import bgimg3 from '../assets//image3.jpg'
 
 export default function Banner() {
   return (
-    <div>
+    <div className='w-11/12 mx-auto'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

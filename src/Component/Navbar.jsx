@@ -1,11 +1,23 @@
 import logo from "../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, IconButton, Menu, MenuItem } from "@mui/material";
 import { useContext, useState } from "react";
 import AuthContext from "../Context/AuthContext";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
@@ -18,7 +30,7 @@ const Navbar = () => {
   };
   
   return (
-    <div className="navbar bg-base-100 shadow-sm container px-4 w-11/12 mx-auto ">
+    <div className="navbar bg-base-100 shadow-sm container px-4 w-11/12 mx-auto justify-between items-center">
       <div className="flex-1">
         <Link to="/" className="flex gap-2 items-center">
           <img className="w-14" src={logo} alt="logo" />
@@ -27,51 +39,57 @@ const Navbar = () => {
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
-          <li>
+          <li className=" mt-2 mr-3">
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
-            <NavLink to="/allService">All Service</NavLink>
+          <li className=" mt-2 mr-3">
+            <NavLink to="/allServices">All Service</NavLink>
           </li>
 
           
           {user  ? (
-          <div className='dropdown dropdown-end z-50'>
-            <div
-              tabIndex={0}
-              role='button'
-              className='btn btn-ghost btn-circle avatar'
-            >
-              <div title={user?.displayName} className='w-10 rounded-full'>
-                <img
+            <div>
+              <IconButton
+                
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                 <img
+                 title={user?.displayName}
+                  className='w-10 rounded-full'
                   referrerPolicy='no-referrer'
                   alt='User Profile Photo'
                   src={user?.photoURL}
                 />
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
-            >
-              <li>
-                <Link to='/add-job' className='justify-between'>
-                  Add Job
-                </Link>
-              </li>
-              <li>
-                <Link to='/my-posted-jobs'>My Posted Services</Link>
-              </li>
-              <li className='mt-2'>
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>My account</MenuItem>
                 <Button
                   onClick={handleSignOut}
-                  className='bg-gray-200 block text-center'
+                  className='bg-gray-200 block text-right text-blue-500'
                 >
-                  Logout
+                 <FaArrowRightToBracket/> Logout
                 </Button>
-              </li>
-            </ul>
-          </div>
+              </Menu>
+            </div>
         ):
         
         (

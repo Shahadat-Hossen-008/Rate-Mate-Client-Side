@@ -22,7 +22,7 @@ useEffect(()=>{
   return (
     <div className="w-11/12 mx-auto mt-20">
           <div className="banner bg-blue-500 text-white p-10 text-center">
-        <h1 className="text-4xl font-bold font-montserrat">Welcome to Our Services</h1>
+        <h1 className="text-4xl font-bold font-montserrat">Discover All Offered Services</h1>
         <p className="mt-4">Check out the most popular services people are raving about.</p>
       </div>
       <div className="md:flex md: justify-between my-5">
