@@ -15,6 +15,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import AuthContext from "../../Context/AuthContext";
 import GoogleButton from "../../Component/SocialLoginButton/GoogleButton";
+import toast from "react-hot-toast";
 
 
 function Login() {
@@ -23,7 +24,7 @@ function Login() {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location?.state || "/";
-  const [showPassword, setShowPassword] = useState();
+  const [showPassword, setShowPassword] = useState(true);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (event) => event.preventDefault();
   const handleLogin =(e)=>{
@@ -40,7 +41,7 @@ function Login() {
         
     })
     .catch(error=>{
-        console.log(error.message);
+        toast.error(error.message);
         
     })
     
@@ -91,7 +92,7 @@ function Login() {
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                       >
-                        {showPassword ? <MdVisibilityOff /> : <MdVisibility />}
+                        {showPassword ?   <MdVisibility />: <MdVisibilityOff />}
                       </IconButton>
                     </InputAdornment>
                   ),

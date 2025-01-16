@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
-  const { serviceImage, serviceTitle, description, category, price, _id } = service;
+  const { serviceImage, serviceTitle, description, category, price, _id } = service || {};
 
   return (
     <motion.div

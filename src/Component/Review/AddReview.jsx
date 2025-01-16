@@ -7,6 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { FaCalendarAlt } from "react-icons/fa";
 import { format } from "date-fns";
 import useAuth from "../../Context/Custom Hook/useAuth";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 function AddReview({serviceId}) {
@@ -28,15 +30,23 @@ function AddReview({serviceId}) {
       setError(false); // Clear error if rating is selected
     }
   };
-  const handleReview = e =>{
+  const handleReview = async e =>{
     e.preventDefault();
     const review = e.target.review.value;
     if (rating === 0) {
         setError(true);
         return; // Prevent form submission
       }
-
       const formateDate = format(new Date(startDate), 'P')
+      const data = {review, rating, formateDate, user_Email, user_Name, user_Photo, serviceId }
+     
+      try{
+        const response = await axios.post('http://localhost:5000/all-reviews', data)
+        toast.success('Review added successfully')
+        console.log('Response', response.data)
+      }catch(err){
+          toast.error(err.message)
+      }
     console.log({review, rating, formateDate, user_Email, user_Name, user_Photo, serviceId });
     resetForm()
   }

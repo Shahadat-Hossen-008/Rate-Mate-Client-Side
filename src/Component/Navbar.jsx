@@ -4,6 +4,7 @@ import { Button, IconButton, Menu, MenuItem } from "@mui/material";
 import { useContext, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import { FaArrowRightToBracket } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -22,10 +23,10 @@ const Navbar = () => {
     signOutUser()
       .then(() => {
         
-        console.log("Sign Out Successful");
+        toast.success("Sign Out Successful");
       })
       .catch((err) => {
-        console.log("Error occur");
+        toast.error("Error occur");
       });
   };
   
@@ -48,48 +49,42 @@ const Navbar = () => {
 
           
           {user  ? (
-            <div>
-              <IconButton
-                
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                 <img
-                 title={user?.displayName}
-                  className='w-10 rounded-full'
+            <div className='dropdown dropdown-end z-50'>
+            <div
+              tabIndex={0}
+              role='button'
+              className='btn btn-ghost btn-circle avatar'
+            >
+              <div title={user?.displayName} className='w-10 rounded-full'>
+                <img
                   referrerPolicy='no-referrer'
                   alt='User Profile Photo'
                   src={user?.photoURL}
                 />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem>Profile</MenuItem>
-                <MenuItem>My account</MenuItem>
-                <Button
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+            >
+              <li>
+                <Link to='/add-job' className='justify-between'>
+                  My Services
+                </Link>
+              </li>
+              <li>
+                <Link to='/my-posted-jobs'>My Posted Reviews</Link>
+              </li>
+              <li className='mt-2'>
+              <Button
                   onClick={handleSignOut}
-                  className='bg-gray-200 block text-right text-blue-500'
+                  className='bg-gray-200  text-blue-500 flex justify-start items-center'
                 >
                  <FaArrowRightToBracket/> Logout
                 </Button>
-              </Menu>
-            </div>
+              </li>
+            </ul>
+          </div>
         ):
         
         (

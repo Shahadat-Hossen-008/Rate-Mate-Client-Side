@@ -7,9 +7,10 @@ import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 import GoogleButton from "../../Component/SocialLoginButton/GoogleButton";
+import toast from "react-hot-toast";
 
 function Register() {
-  const{createUser, updateUserProfile, setUser} = useContext(AuthContext);
+  const{createUser, updateUserProfile, setUser, setLoading} = useContext(AuthContext);
   const [seePassword, setSeePassword] = useState(true);
   const navigate = useNavigate();
   const {
@@ -38,14 +39,16 @@ function Register() {
       .then(()=>{
         setUser(user);
         navigate('/');
+        setLoading(false)
+
       })
       .catch(err=>{
-        console.log(err.message)
+        toast.error(err.message)
       })
       
     })
     .catch(error=>{
-      console.log(error.message);
+      toast.error(error.message);
       
     })
   }

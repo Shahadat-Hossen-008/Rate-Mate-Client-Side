@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import AuthContext from "../../Context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 
@@ -19,7 +20,7 @@ function GoogleButton() {
         navigate(from);
       })
       .catch((error) => {
-        console.log(error.message);
+        toast.error(error.message);
       });
   };
  

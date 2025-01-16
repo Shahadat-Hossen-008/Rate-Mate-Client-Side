@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ServiceCard from '../../Component/Service Card/ServiceCard';
+import toast from 'react-hot-toast';
 
 function AllServices () {
     const [services, setServices] = useState([]);
@@ -11,7 +12,7 @@ function AllServices () {
                 setServices(data);
                 
             }catch(err){
-                console.log(err.message)
+                toast.error(err.message)
             }
         }
         fetchData();
