@@ -82,7 +82,7 @@ function Login() {
                 margin="normal"
                 name="password"
                 label="Password"
-                type={showPassword ? "text" : "password"}
+                type={showPassword ?  "password":"text" }
                 id="password"
                 InputProps={{
                   endAdornment: (
@@ -92,7 +92,7 @@ function Login() {
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                       >
-                        {showPassword ?   <MdVisibility />: <MdVisibilityOff />}
+                        {showPassword ?   <MdVisibilityOff />: <MdVisibility />}
                       </IconButton>
                     </InputAdornment>
                   ),

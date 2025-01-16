@@ -1,12 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 import AddReview from "../../Component/Review/AddReview";
+import Review from "../../Component/Reviews/Review";
+
 
 
 
 const ServiceDetails = () => {
     const service = useLoaderData();
   return (
-    <div className='flex flex-col md:flex-row justify-around gap-5 items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto'>
+    <div className="min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto">
+      <div className='flex flex-col md:flex-row justify-around gap-5 items-center '>
       {/* Service Details */}
       <div className='flex-1 px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
       <img
@@ -54,10 +57,13 @@ const ServiceDetails = () => {
       </div>
       
       {/* Add Review Form */}
-     <AddReview serviceId = {service._id}></AddReview>
+     <AddReview serviceId = {service._id} serviceTitle={service.title}></AddReview>
 
-      {/* Service Reviews Section */}
       
+     
+    </div>
+    {/* Service Reviews Section */}
+    <Review serviceId={service._id}></Review>
     </div>
   );
 };

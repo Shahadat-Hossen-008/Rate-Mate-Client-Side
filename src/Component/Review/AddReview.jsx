@@ -9,10 +9,11 @@ import { format } from "date-fns";
 import useAuth from "../../Context/Custom Hook/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
-function AddReview({serviceId}) {
-    
+function AddReview({serviceId, serviceTitle}) {
+    const navigate = useNavigate();
     const {user} = useAuth();
     const user_Email = user.email;
     const user_Name = user.displayName;
@@ -38,16 +39,17 @@ function AddReview({serviceId}) {
         return; // Prevent form submission
       }
       const formateDate = format(new Date(startDate), 'P')
-      const data = {review, rating, formateDate, user_Email, user_Name, user_Photo, serviceId }
+      const data = {review, rating, formateDate, user_Email, user_Name, user_Photo, serviceId, serviceTitle }
+      
      
       try{
         const response = await axios.post('http://localhost:5000/all-reviews', data)
         toast.success('Review added successfully')
-        console.log('Response', response.data)
+        navigate(0)
       }catch(err){
           toast.error(err.message)
       }
-    console.log({review, rating, formateDate, user_Email, user_Name, user_Photo, serviceId });
+    console.log({review, rating, formateDate, user_Email, user_Name, user_Photo, serviceId, serviceTitle });
     resetForm()
   }
   const resetForm = () => {
