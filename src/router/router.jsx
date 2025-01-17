@@ -8,6 +8,7 @@ import AllServices from "../Pages/All services/AllServices";
 import ProtectedRouter from "./ProtectedRouter";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import AddService from "../Pages/Add service/AddService";
+import MyPostedService from "../Pages/My Posted Service/MyPostedService";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path:'addService',
                 element:<ProtectedRouter><AddService></AddService></ProtectedRouter>
+            },
+            {
+                path:'myServices',
+                element:<ProtectedRouter><MyPostedService></MyPostedService></ProtectedRouter>
             },
             {
                 path:'login',

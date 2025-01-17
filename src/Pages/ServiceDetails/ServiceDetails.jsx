@@ -8,8 +8,8 @@ import Review from "../../Component/Reviews/Review";
 const ServiceDetails = () => {
     const service = useLoaderData();
   return (
-    <div className="min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto mt-12">
-      <div className='flex flex-col md:flex-row justify-around gap-5 items-center '>
+    <div className="min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto mt-8">
+      <div className='flex flex-col md:flex-row justify-around gap-5 items-start '>
       {/* Service Details */}
       <div className='flex-1 px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
       <img
