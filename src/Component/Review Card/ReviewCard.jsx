@@ -4,7 +4,7 @@ import Rating from 'react-rating'
 
 function ReviewCard ({review}) {
   return (
-    <div className="p-4 bg-white rounded-md shadow-md w-1/2 mb-4 hover:shadow-xl mt-5">
+    <div className="p-4 bg-white rounded-md shadow-md w-1/2 mb-4 hover:shadow-xl mt-5 ">
         <div className="flex items-center gap-4">
         <img
           src={review.user_Photo}

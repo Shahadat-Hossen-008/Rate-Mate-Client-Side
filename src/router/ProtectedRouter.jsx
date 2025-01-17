@@ -9,7 +9,7 @@ function ProtectedRouter ({children}) {
    if(loading){
     return <Loading></Loading>
    }
-   if(user){
+   if(user && user?.email){
     return children
    }
   return <Navigate to='/login' state={location.pathname} ></Navigate>

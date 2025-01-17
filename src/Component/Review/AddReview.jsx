@@ -96,11 +96,11 @@ function AddReview({serviceId, serviceTitle}) {
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}
-              className="border border-black"
+              className="border border-black pl-8"
               required
             />
             <FaCalendarAlt
-              className="absolute -left-6 top-1/2 transform -translate-y-1/2 text-gray-500"
+              className="absolute pl-2 left-0 top-1/2 transform -translate-y-1/2 text-gray-500"
               size={20}
             />
           </div>

@@ -50,7 +50,6 @@ function Login() {
   }
   return (
     <div>
-      <div></div>
       <Container component="main" maxWidth="xs" className="shadow-lg p-20 mt-10">
         <Box
           sx={{

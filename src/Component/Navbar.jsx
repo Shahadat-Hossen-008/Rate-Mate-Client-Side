@@ -8,16 +8,6 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
-  const [anchorEl, setAnchorEl] = useState(null);
-
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleSignOut = () => {
     signOutUser()
@@ -46,7 +36,9 @@ const Navbar = () => {
           <li className=" mt-2 mr-3">
             <NavLink to="/allServices">All Service</NavLink>
           </li>
-
+          {user && <li className=" mt-2 mr-3">
+            <NavLink to="addService">Add Service</NavLink>
+          </li>}
           
           {user  ? (
             <div className='dropdown dropdown-end z-50'>

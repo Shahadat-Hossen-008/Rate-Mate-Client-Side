@@ -7,6 +7,7 @@ import Register from "../Pages/AuthenticationPages/Register";
 import AllServices from "../Pages/All services/AllServices";
 import ProtectedRouter from "./ProtectedRouter";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
+import AddService from "../Pages/Add service/AddService";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
                 element:<ProtectedRouter><ServiceDetails></ServiceDetails></ProtectedRouter>,
                 loader:({params})=> fetch(`http://localhost:5000/all-services/${params.id}`)
                 
+            },
+            {
+                path:'addService',
+                element:<ProtectedRouter><AddService></AddService></ProtectedRouter>
             },
             {
                 path:'login',

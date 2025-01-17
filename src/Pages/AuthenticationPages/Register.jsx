@@ -10,7 +10,7 @@ import GoogleButton from "../../Component/SocialLoginButton/GoogleButton";
 import toast from "react-hot-toast";
 
 function Register() {
-  const{createUser, updateUserProfile, setUser} = useContext(AuthContext);
+  const{createUser, updateUserProfile, setUser, setLoading} = useContext(AuthContext);
   const [seePassword, setSeePassword] = useState(true);
   const navigate = useNavigate();
   const {
@@ -37,7 +37,7 @@ function Register() {
       updateUserProfile(name, photo)
       .then(()=>{
         setUser(user);
-        
+        setLoading(false);
         navigate('/');
       })
       .catch(err=>{
