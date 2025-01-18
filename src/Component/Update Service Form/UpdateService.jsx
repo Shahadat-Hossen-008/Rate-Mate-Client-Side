@@ -181,7 +181,7 @@ import { format } from "date-fns";
               </FormControl>
             </div>
           </div>
-          <Typography  sx={{ mt: 2 , mb:2, border:'1px solid #000' }}>
+          <Typography  sx={{ mt: 2 , mb:2, border:'1px solid #000', width:'38%' }}>
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}

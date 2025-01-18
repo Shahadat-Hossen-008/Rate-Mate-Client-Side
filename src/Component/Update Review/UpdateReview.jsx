@@ -75,7 +75,7 @@ function UpdateReview({ review }) {
             ({review.rating}/5)
           </Typography>
           <Typography
-            sx={{ mt: 2, mb: 2, fontFamily: "poppins" }}
+            sx={{ mt: 2, mb: 2, fontFamily: "poppins", border:'1px solid #000', width:'38%' }}
           >
             <DatePicker
               selected={startDate}
