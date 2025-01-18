@@ -22,7 +22,6 @@ function Review ({serviceId}) {
         review();
     },[])
    
-   
     console.log(specificReview)
   return (
     <div><h2 className='text-xl text-gray-900 font-montserrat font-semibold mt-5'> { specificReview.length} Reviews</h2>

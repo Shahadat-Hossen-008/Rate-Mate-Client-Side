@@ -21,7 +21,7 @@ const ServiceCard = ({ service }) => {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 font-montserrat">{serviceTitle}</div>
         <p className="text-gray-700 text-base">
-          {description.substring(0,70)}...
+          {description?.substring(0, 70)}...
         </p>
       </div>
       

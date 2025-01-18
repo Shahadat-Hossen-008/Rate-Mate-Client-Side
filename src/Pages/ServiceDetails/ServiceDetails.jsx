@@ -7,6 +7,8 @@ import Review from "../../Component/Reviews/Review";
 
 const ServiceDetails = () => {
     const service = useLoaderData();
+    console.log(service.serviceTitle);
+    
   return (
     <div className="min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto mt-8">
       <div className='flex flex-col md:flex-row justify-around gap-5 items-start '>
@@ -27,7 +29,7 @@ const ServiceDetails = () => {
 
         <div>
           <h1 className='mt-2 text-3xl font-semibold text-gray-800 font-montserrat'>
-            {service?.title}
+            {service?.serviceTitle}
           </h1>
 
           <p className='mt-2 text-lg text-gray-600'>{service.description}</p>
@@ -57,7 +59,7 @@ const ServiceDetails = () => {
       </div>
       
       {/* Add Review Form */}
-     <AddReview serviceId = {service._id} serviceTitle={service.title}></AddReview>
+     <AddReview serviceId = {service._id} serviceTitle={service.serviceTitle}></AddReview>
 
       
      

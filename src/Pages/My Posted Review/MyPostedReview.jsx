@@ -16,8 +16,8 @@ import {
   TableRow,
 } from "@mui/material";
 import { MdDeleteOutline, MdEdit } from "react-icons/md";
-import AddService from "../Add service/AddService";
-import UpdateService from "../../Component/Update Service Form/UpdateService";
+import UpdateReview from "../../Component/Update Review/UpdateReview";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -32,17 +32,17 @@ const style = {
   maxHeight: "90vh",
 };
 
-function MyPostedService() {
+function MyPostedReview() {
   const [open, setOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedReviews, setSelectedReviews] = useState(null);
   const { user } = useAuth();
-  const [services, setServices] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/all-service/${user?.email}`
+        `http://localhost:5000/all-review/${user?.email}`
       );
-      setServices(data);
+      setReviews(data);
     } catch (err) {
       toast.error(err.message);
     }
@@ -54,7 +54,7 @@ function MyPostedService() {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/all-service/${id}`
+        `http://localhost:5000/all-review/${id}`
       );
       fetchData();
       toast.success("Delete Successfully");
@@ -90,12 +90,12 @@ function MyPostedService() {
       </div>
     ));
   };
-  const handleOpen = (service) => {
-    setSelectedService(service);
+  const handleOpen = (review) => {
+    setSelectedReviews(review);
     setOpen(true);
   };
   const handleClose = () => {
-    setSelectedService(null);
+    setSelectedReviews(null);
     setOpen(false);
   };
 
@@ -104,7 +104,7 @@ function MyPostedService() {
       <h1 className="font-montserrat text-xl font-semibold my-8">
         My Posted Service{" "}
         <span className="bg-blue-400 rounded-2xl py-1 px-4">
-          {services.length}
+          {reviews.length}
         </span>
       </h1>
       <TableContainer component={Paper}>
@@ -113,14 +113,13 @@ function MyPostedService() {
             <TableRow>
               <TableCell>Title</TableCell>
               <TableCell align="left">Date</TableCell>
-              <TableCell align="left">Price</TableCell>
-              <TableCell align="left">Category</TableCell>
-              <TableCell align="left">Description</TableCell>
+              <TableCell align="left">Review</TableCell>
+              <TableCell align="left">Rating</TableCell>
               <TableCell align="left">Edit</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {services.map((service) => (
+            {reviews.map((service) => (
               <TableRow
                 key={service._id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -128,12 +127,12 @@ function MyPostedService() {
                 <TableCell component="th" scope="row">
                   {service.serviceTitle}
                 </TableCell>
-                <TableCell align="left">{service.addedDate}</TableCell>
-                <TableCell align="left"> ${service.price}</TableCell>
-                <TableCell align="left">{service.category}</TableCell>
+                <TableCell align="left">{service.formateDate}</TableCell>
                 <TableCell align="left">
-                  {service.description.substring(0, 40)}.....
+                  {service.review.substring(0, 40)}.....
                 </TableCell>
+                <TableCell align="left"> {service.rating}</TableCell>
+                
                 <TableCell align="left">
                   <IconButton
                     onClick={() => deleteConfirmation(service._id)}
@@ -161,8 +160,8 @@ function MyPostedService() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {selectedService && (
-            <UpdateService service={selectedService} /> 
+          {selectedReviews && (
+            <UpdateReview review={selectedReviews} /> 
           )}
         </Box>
       </Modal>
@@ -170,4 +169,4 @@ function MyPostedService() {
   );
 }
 
-export default MyPostedService;
+export default MyPostedReview;

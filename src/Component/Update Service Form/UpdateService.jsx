@@ -1,6 +1,5 @@
 import {
     Button,
-    Container,
     FormControl,
     InputLabel,
     MenuItem,
@@ -11,17 +10,15 @@ import {
   import React, { useState } from "react";
   
   import DatePicker from "react-datepicker";
-  import { FaCalendarAlt } from "react-icons/fa";
   import useAuth from "../../Context/Custom Hook/useAuth";
   import axios from "axios";
   import toast from "react-hot-toast";
   import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
   
   function UpdateService({service}) {
     const { user } = useAuth();
-    const navigate = useNavigate();
-    console.log(service);
-    
+    const navigate = useNavigate()
     const names = [
       "Technology",
       "Design",
@@ -35,16 +32,18 @@ import {
       "Gym",
     ];
   
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(service.addedDate || new Date());
     const handleSubmit = async (e) => {
       e.preventDefault();
+      const addedDate = format(startDate, "P");
       const formData = new FormData(e.target);
       const initial = Object.fromEntries(formData.entries());
+      const data = {...initial, addedDate}
+      
       try {
-        await axios.post("http://localhost:5000/add-services", initial);
-        toast.success("Service Added Successfully");
-  
-        navigate("/allServices");
+        await axios.put(`http://localhost:5000/update-service/${service._id}`, data);
+        toast.success("Service Update Successfully");
+        navigate(0)
       } catch (err) {
         toast.error(err.message);
       }
@@ -67,6 +66,7 @@ import {
               label="Enter PhotoURL"
               variant="outlined"
               className="my-2"
+              defaultValue={service.serviceImage}
               required
             />
           </div>
@@ -82,6 +82,7 @@ import {
               label="Enter title"
               variant="outlined"
               className="my-2"
+              defaultValue={service.serviceTitle}
               required
             />
           </div>
@@ -97,6 +98,7 @@ import {
               label="Enter Company Name"
               variant="outlined"
               className="my-2"
+              defaultValue={service.companyName}
               required
             />
           </div>
@@ -111,6 +113,7 @@ import {
               id="outlined-basic"
               label="Enter Your Url"
               variant="outlined"
+              defaultValue={service.website}
               className="my-2"
               required
             />
@@ -128,6 +131,7 @@ import {
               name="description"
               multiline
               rows={4}
+              defaultValue={service.description}
               required
               className="my-2"
             />
@@ -145,6 +149,7 @@ import {
                 type="number"
                 name="price"
                 variant="standard"
+                defaultValue={service.price}
                 required
                 className="my-2"
               />
@@ -162,6 +167,7 @@ import {
                   id="demo-simple-select"
                   name="category"
                   label="category"
+                  defaultValue={service.category}
                 >
                   <MenuItem key="">
                     <em>None</em>
@@ -179,8 +185,6 @@ import {
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}
-              
-              name="addedDate"
               required
             />
           </Typography>
@@ -201,8 +205,8 @@ import {
             />
           </div>
           <div className="grid items-center mt-5">
-            <Button variant="contained" type="submit">
-              Add Service
+            <Button sx={{ mt: 2, width:'100%' }} variant="contained" type="submit">
+              Update Service
             </Button>
           </div>
         </form>
