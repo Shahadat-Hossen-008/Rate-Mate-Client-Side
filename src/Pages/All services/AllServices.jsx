@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ServiceCard from '../../Component/Service Card/ServiceCard';
 import toast from 'react-hot-toast';
+import DynamicTitle from '../../Dynamic Title/DynamicTitle';
 
 function AllServices () {
     const [services, setServices] = useState([]);
@@ -49,7 +50,8 @@ function AllServices () {
     },[])
   return (
     <div className='w-11/12 mx-auto'>
-    <div className='flex justify-center items-center gap-5 '>
+    <DynamicTitle title={"All Service | RateMate"} description={"See  All Service Information"} />
+    <div className='flex justify-center items-center gap-5 my-5'>
     <select
               onChange={(e)=>setFilter(e.target.value)}
               name='category'
@@ -67,7 +69,7 @@ function AllServices () {
             <label className="input input-bordered flex items-center gap-2  ">
           <input type="text" className="grow"
           onChange={(e)=>setSearch(e.target.value)}
-           placeholder="Search" />
+           placeholder="Search title" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"

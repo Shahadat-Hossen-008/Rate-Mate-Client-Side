@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { MdDeleteOutline, MdEdit } from "react-icons/md";
 import UpdateReview from "../../Component/Update Review/UpdateReview";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 const style = {
   position: "absolute",
@@ -115,11 +116,12 @@ function MyPostedReview() {
   },[search])
   return (
     <div className="w-11/12 mx-auto">
+    <DynamicTitle title={"My Posted Review | RateMate"} description={"Explore Review You Added"}/>
       <div className="my-5 w-1/3 mx-auto">
         <label className="input input-bordered flex items-center gap-2 w-full ">
           <input type="text" className="grow"
           onChange={(e)=>setSearch(e.target.value)}
-           placeholder="Search" />
+           placeholder="Search title" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"

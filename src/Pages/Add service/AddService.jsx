@@ -15,6 +15,7 @@ import useAuth from "../../Context/Custom Hook/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 function AddService() {
   const { user } = useAuth();
@@ -48,6 +49,7 @@ function AddService() {
   };
   return (
     <div className="min-h-screen max-w-2xl shadow-xl p-20 mx-auto mt-5">
+    <DynamicTitle title={"Add Service | RateMate"} description={"Add your service"}/>
       <h1 className="font-montserrat text-2xl text-center text-blue-500">
         Add Your Service
       </h1>

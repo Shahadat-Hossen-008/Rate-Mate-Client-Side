@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import AddReview from "../../Component/Review/AddReview";
 import Review from "../../Component/Reviews/Review";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 
 
@@ -11,6 +12,7 @@ const ServiceDetails = () => {
     
   return (
     <div className="min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto mt-8">
+    <DynamicTitle title={`${service.serviceTitle} | RateMate`} description={"Explore Service details"}/>
       <div className='flex flex-col md:flex-row justify-around gap-5 items-start '>
       {/* Service Details */}
       <div className='flex-1 px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>

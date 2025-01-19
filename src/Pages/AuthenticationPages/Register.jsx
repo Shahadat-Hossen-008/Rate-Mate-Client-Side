@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 import GoogleButton from "../../Component/SocialLoginButton/GoogleButton";
 import toast from "react-hot-toast";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 function Register() {
   const{createUser, updateUserProfile, setUser, setLoading} = useContext(AuthContext);
@@ -52,6 +53,7 @@ function Register() {
   }
   return (
     <div className="hero bg-base-100 min-h-screen py-20">
+    <DynamicTitle title={"Register | RateMate"} description={"Register For Add And know more service"}/>
       <div className="hero-content flex-col lg:flex-row-reverse justify-center items-center">
         <div className="text-center w-[400px]">
           <Lottie animationData={registerLottie}></Lottie>

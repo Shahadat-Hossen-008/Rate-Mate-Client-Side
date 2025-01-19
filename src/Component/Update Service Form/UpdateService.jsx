@@ -15,6 +15,7 @@ import {
   import toast from "react-hot-toast";
   import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
   
   function UpdateService({service}) {
     const { user } = useAuth();
@@ -50,6 +51,7 @@ import { format } from "date-fns";
     };
     return (
       <div className="min-h-screen max-w-2xl shadow-xl p-20 mx-auto mt-5">
+      <DynamicTitle title={"Update Service | RateMate"} description={"Update Your Service Information"} />
         <Typography sx={{ mt: 2 , mb:2, fontFamily:'montserrat' }} variant="h6" component="h2">
           Update Your Service
         </Typography>

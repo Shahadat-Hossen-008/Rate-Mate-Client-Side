@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import Rating from "react-rating";
 import { format } from "date-fns";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 function UpdateReview({ review }) {
   const navigate = useNavigate();
@@ -41,6 +42,24 @@ function UpdateReview({ review }) {
 
   return (
     <div className="min-h-screen max-w-2xl shadow-xl p-20 mx-auto mt-5">
+    <DynamicTitle title={"Update Review | RateMate"} description={"Update Your Review Information"} />
+    <div>
+                <Typography  sx={{ mt: 2 , mb:2 }}>
+                  Service Title:
+                </Typography>
+                <TextField
+                  type="text"
+                  fullWidth
+                  name="serviceTitle"
+                  id="outlined-basic"
+                  label="Title"
+                  variant="outlined"
+                  className="my-2"
+                  defaultValue={review.serviceTitle}
+                  disabled={true}
+                  required
+                />
+              </div>
       <Typography
         sx={{ mt: 2, mb: 2, fontFamily: "montserrat" }}
         variant="h6"

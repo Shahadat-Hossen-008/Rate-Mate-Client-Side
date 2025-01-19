@@ -16,6 +16,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 import GoogleButton from "../../Component/SocialLoginButton/GoogleButton";
 import toast from "react-hot-toast";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 
 function Login() {
@@ -50,6 +51,7 @@ function Login() {
   }
   return (
     <div>
+      <DynamicTitle title={"Login | RateMate"} description={"Login Page"}/>
       <Container component="main" maxWidth="xs" className="shadow-lg p-20 mt-10">
         <Box
           sx={{

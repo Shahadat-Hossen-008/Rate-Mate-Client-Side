@@ -18,6 +18,7 @@ import {
 import { MdDeleteOutline, MdEdit } from "react-icons/md";
 import AddService from "../Add service/AddService";
 import UpdateService from "../../Component/Update Service Form/UpdateService";
+import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 const style = {
   position: "absolute",
   top: "50%",
@@ -101,6 +102,7 @@ function MyPostedService() {
 
   return (
     <div className="w-11/12 mx-auto">
+    <DynamicTitle title={"My Posted Service | RateMate"} description={"Explore Service You Added"}/>
       <h1 className="font-montserrat text-xl font-semibold my-8">
         My Posted Service{" "}
         <span className="bg-blue-400 rounded-2xl py-1 px-4">
