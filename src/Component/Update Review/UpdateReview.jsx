@@ -30,7 +30,7 @@ function UpdateReview({ review }) {
     const initial = { review: reviewText, rating, formateDate };
     try {
       await axios.put(
-        `http://localhost:5000/update-review/${review._id}`,
+        `https://rate-mate-server.vercel.app/update-review/${review._id}`,
         initial
       );
       toast.success("Review Updated Successfully");

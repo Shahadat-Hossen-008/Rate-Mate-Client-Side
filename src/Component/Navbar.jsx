@@ -1,11 +1,11 @@
 import logo from "../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
-import { Button, IconButton, Menu, MenuItem } from "@mui/material";
-import { useContext, useState } from "react";
+import { Button } from "@mui/material";
+import { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import toast from "react-hot-toast";
-import Theme from "../Theme controller/Theme";
+
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -20,7 +20,6 @@ const Navbar = () => {
         toast.error("Error occur");
       });
   };
-  
   return (
     <div className="navbar bg-base-100 shadow-sm container px-4 w-11/12 mx-auto justify-between items-center">
       <div className="flex-1">
@@ -40,7 +39,6 @@ const Navbar = () => {
           {user && <li className=" mt-2 mr-3">
             <NavLink to="addService">Add Service</NavLink>
           </li>}
-          <Theme></Theme>
           {user  ? (
             <div className='dropdown dropdown-end z-50'>
             <div

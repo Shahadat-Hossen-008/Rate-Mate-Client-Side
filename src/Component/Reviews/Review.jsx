@@ -8,7 +8,7 @@ function Review ({serviceId}) {
     const[reviews, setReviews] = useState([]);
     const review = async ()=>{
         try{
-            const {data} = await axios.get('http://localhost:5000/all-review')
+            const {data} = await axios.get('https://rate-mate-server.vercel.app/all-review')
             setReviews(data)
             
         }
@@ -22,7 +22,7 @@ function Review ({serviceId}) {
         review();
     },[])
    
-    console.log(specificReview)
+    
   return (
     <div><h2 className='text-xl text-gray-900 font-montserrat font-semibold mt-5'> { specificReview.length} Reviews</h2>
     <div className='mt-5 mb-5'>

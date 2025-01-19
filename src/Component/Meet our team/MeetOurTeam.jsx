@@ -1,9 +1,10 @@
-import React from "react";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import React, { useEffect } from "react";
+
 import team1 from "../../assets/Team1.jpg"; 
 import team2 from "../../assets/Team2.jpg";
 import team3 from "../../assets/Team3.jpg";
 import team4 from "../../assets/Team4.jpg";
+import Aos from "aos";
 
 // Team data
 const team = [
@@ -38,46 +39,32 @@ const team = [
 ];
 
 function MeetOurTeam() {
-  const { scrollYProgress } = useViewportScroll();
-
-  
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -90]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, -190]);
-
+  useEffect(() => {
+    Aos.init({duration: 600, easing: 'ease-in-sine'});
+    Aos.refresh();
+  }, []);
   return (
-    <section className="min-h-screen bg-gray-100 py-20">
+    <section className="min-h-screen bg-gray-100 py-20" data-aos="fade-up">
       <div className="container mx-auto text-center mb-10">
-        <motion.h2
+        <h2
           className="text-4xl font-bold text-gray-800 mb-4 font-montserrat"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
         >
           Meet Our Team
-        </motion.h2>
-        <motion.p
+        </h2>
+        <p
           className="text-lg text-gray-600"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
         >
           Our dedicated team of professionals.
-        </motion.p>
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-11/12 mx-auto">
         {team.map((member, index) => {
-          const motionY = [y1, y2, y3, y4][index]; 
           return (
-            <motion.div
+            <div
               key={index}
               className="flex flex-col lg:flex-row items-center my-8 bg-white shadow-lg rounded-lg overflow-hidden gap-8"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+
             >
               {/* Left side: Text */}
               <div className="lg:w-1/2 p-6 flex-1">
@@ -87,17 +74,17 @@ function MeetOurTeam() {
               </div>
 
               {/* Right side: Image */}
-              <motion.div
+              <div
                 className="lg:w-1/2 flex-1"
                 style={{ backgroundImage: `url(${member.image})` }}
               >
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="object-cover w-full h-64 lg:h-full"
+                  className="object-cover w-[350px] h-[200px] lg:h-full"
                 />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           );
         })}
       </div>

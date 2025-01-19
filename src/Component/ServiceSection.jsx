@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import ServiceCard from "./Service Card/ServiceCard";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 function ServiceSection () {
@@ -10,12 +11,12 @@ const[services, setServices] = useState([]);
 useEffect(()=>{
     const fetchData = async()=>{
         try{
-            const {data} = await axios.get('http://localhost:5000/service-section')
+            const {data} = await axios.get('https://rate-mate-server.vercel.app/service-section')
              setServices(data);
              
         }
         catch(err){
-           console.log( err.message);
+           toast.error( err.message);
         }
     };
     fetchData();

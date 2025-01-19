@@ -41,7 +41,7 @@ function MyPostedService() {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/all-service/${user?.email}`
+        `https://rate-mate-server.vercel.app/all-service/${user?.email}`
       );
       setServices(data);
     } catch (err) {
@@ -55,7 +55,7 @@ function MyPostedService() {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/all-service/${id}`
+        `https://rate-mate-server.vercel.app/all-service/${id}`
       );
       fetchData();
       toast.success("Delete Successfully");

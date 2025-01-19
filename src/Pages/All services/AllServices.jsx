@@ -13,7 +13,7 @@ function AllServices () {
         const filterData = async () => {
             try {
               const { data } = await axios.get(
-                `http://localhost:5000/allService?filter=${filter}`
+                `https://rate-mate-server.vercel.app/allService?filter=${filter}`
               );
               setServices(data);
             } catch (err) {
@@ -26,7 +26,7 @@ function AllServices () {
   const searchData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/all-service?searchParams=${search}`
+        `https://rate-mate-server.vercel.app/all-service?searchParams=${search}`
       );
       setServices(data);
     } catch (err) {
@@ -39,7 +39,7 @@ function AllServices () {
     useEffect(()=>{
         const fetchData = async()=>{
             try{
-                const {data} = await axios.get('http://localhost:5000/all-services')
+                const {data} = await axios.get('https://rate-mate-server.vercel.app/all-services')
                 setServices(data);
                 
             }catch(err){

@@ -42,7 +42,7 @@ function MyPostedReview() {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/all-review/${user?.email}`
+        `https://rate-mate-server.vercel.app/all-review/${user?.email}`
       );
       setReviews(data);
     } catch (err) {
@@ -56,7 +56,7 @@ function MyPostedReview() {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/all-review/${id}`
+        `https://rate-mate-server.vercel.app/all-review/${id}`
       );
       fetchData();
       toast.success("Delete Successfully");
@@ -104,7 +104,7 @@ function MyPostedReview() {
   const searchData = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/all-reviews?searchParams=${search}`
+        `https://rate-mate-server.vercel.app/all-reviews?searchParams=${search}`
       );
       setReviews(data);
     } catch (err) {

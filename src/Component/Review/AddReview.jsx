@@ -45,9 +45,8 @@ function AddReview({serviceId, serviceTitle}) {
       
      
       try{
-        await axios.post('http://localhost:5000/all-reviews', data)
+        await axios.post('https://rate-mate-server.vercel.app/all-reviews', data)
         toast.success('Review added successfully')
-        console.log(data);
         
         navigate(0)
       }catch(err){

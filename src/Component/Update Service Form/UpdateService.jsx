@@ -42,7 +42,7 @@ import DynamicTitle from "../../Dynamic Title/DynamicTitle";
       const data = {...initial, addedDate}
       
       try {
-        await axios.put(`http://localhost:5000/update-service/${service._id}`, data);
+        await axios.put(`https://rate-mate-server.vercel.app/update-service/${service._id}`, data);
         toast.success("Service Update Successfully");
         navigate(0)
       } catch (err) {

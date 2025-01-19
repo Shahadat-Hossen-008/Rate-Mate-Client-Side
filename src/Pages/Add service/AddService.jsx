@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 function AddService() {
-  const { user, isDarkTheme } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const names = [
     "Technology",
@@ -39,7 +39,7 @@ function AddService() {
     const formData = new FormData(e.target);
     const initial = Object.fromEntries(formData.entries());
     try {
-      await axios.post("http://localhost:5000/add-services", initial);
+      await axios.post("https://rate-mate-server.vercel.app/add-services", initial);
       toast.success("Service Added Successfully");
 
       navigate("/allServices");
@@ -48,7 +48,7 @@ function AddService() {
     }
   };
   return (
-    <div className={`min-h-screen max-w-2xl shadow-xl p-20 mx-auto mt-5 ${isDarkTheme ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <div className={`min-h-screen max-w-2xl shadow-xl p-20 mx-auto mt-5`}>
     <DynamicTitle title={"Add Service | RateMate"} description={"Add your service"}/>
       <h1 className="font-montserrat text-2xl text-center text-blue-500">
         Add Your Service

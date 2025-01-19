@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             {
                 path:'allServices/:id',
                 element:<ProtectedRouter><ServiceDetails></ServiceDetails></ProtectedRouter>,
-                loader:({params})=> fetch(`http://localhost:5000/all-services/${params.id}`)
+                loader:({params})=> fetch(`https://rate-mate-server.vercel.app/all-services/${params.id}`)
                 
             },
             {

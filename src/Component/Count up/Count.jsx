@@ -9,9 +9,9 @@ function Count() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/reviewCount");
+        const { data } = await axios.get("https://rate-mate-server.vercel.app/reviewCount");
 
-        setReviewCount(data.count);
+        setReviewCount(data?.count);
       } catch (err) {
         toast.error(err.message);
       }
@@ -21,9 +21,9 @@ function Count() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/serviceCount");
+        const { data } = await axios.get("https://rate-mate-server.vercel.app/serviceCount");
 
-        setServiceCount(data.count);
+        setServiceCount(data?.count);
       } catch (err) {
         toast.error(err.message);
       }

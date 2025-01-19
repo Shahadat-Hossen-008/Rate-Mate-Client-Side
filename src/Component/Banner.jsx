@@ -1,5 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
+import 'aos/dist/aos.css';
 
 // Import Swiper styles
 import 'swiper/css'
@@ -13,10 +14,16 @@ import Slide from './Slide'
 import bgimg1 from '../assets//image1.jpg'
 import bgimg2 from '../assets//image2.jpg'
 import bgimg3 from '../assets//image3.jpg'
+import { useEffect } from 'react'
+import Aos from 'aos'
 
 export default function Banner() {
+  useEffect(() => {
+    Aos.init({duration: 600, easing: 'ease-in-sine'});
+    Aos.refresh();
+  }, []);
   return (
-    <div className='w-11/12 mx-auto'>
+    <div className='w-11/12 mx-auto' data-aos="fade-down">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

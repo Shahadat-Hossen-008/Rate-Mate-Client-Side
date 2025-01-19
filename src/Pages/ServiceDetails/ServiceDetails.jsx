@@ -8,7 +8,7 @@ import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 const ServiceDetails = () => {
     const service = useLoaderData();
-    console.log(service.serviceTitle);
+    
     
   return (
     <div className="min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto mt-8">
