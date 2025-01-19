@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import Theme from "../Theme controller/Theme";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -39,7 +40,7 @@ const Navbar = () => {
           {user && <li className=" mt-2 mr-3">
             <NavLink to="addService">Add Service</NavLink>
           </li>}
-          
+          <Theme></Theme>
           {user  ? (
             <div className='dropdown dropdown-end z-50'>
             <div

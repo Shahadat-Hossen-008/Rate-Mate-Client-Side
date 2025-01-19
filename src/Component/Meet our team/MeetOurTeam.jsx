@@ -74,7 +74,6 @@ function MeetOurTeam() {
             <motion.div
               key={index}
               className="flex flex-col lg:flex-row items-center my-8 bg-white shadow-lg rounded-lg overflow-hidden gap-8"
-              style={{ y: motionY }} 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
@@ -91,9 +90,6 @@ function MeetOurTeam() {
               <motion.div
                 className="lg:w-1/2 flex-1"
                 style={{ backgroundImage: `url(${member.image})` }}
-                initial={{ scale: 1.2 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5 }}
               >
                 <img
                   src={member.image}

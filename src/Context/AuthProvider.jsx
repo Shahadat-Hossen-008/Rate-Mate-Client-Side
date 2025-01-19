@@ -5,6 +5,7 @@ import auth from '../Firebase Config/firebase.config';
 
 const provider = new GoogleAuthProvider();
 function AuthProvider ({children}) {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
     const[user, setUser] = useState(null);
     const[loading, setLoading] = useState(true)
     const createUser = (email, password) =>{
@@ -50,7 +51,9 @@ function AuthProvider ({children}) {
         signOutUser,
         updateUserProfile,
         loading,
-        setLoading
+        setLoading,
+        isDarkTheme,
+        setIsDarkTheme
     }
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

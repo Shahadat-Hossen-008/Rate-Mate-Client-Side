@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import DynamicTitle from "../../Dynamic Title/DynamicTitle";
 
 function AddService() {
-  const { user } = useAuth();
+  const { user, isDarkTheme } = useAuth();
   const navigate = useNavigate();
   const names = [
     "Technology",
@@ -48,7 +48,7 @@ function AddService() {
     }
   };
   return (
-    <div className="min-h-screen max-w-2xl shadow-xl p-20 mx-auto mt-5">
+    <div className={`min-h-screen max-w-2xl shadow-xl p-20 mx-auto mt-5 ${isDarkTheme ? 'bg-black text-white' : 'bg-white text-black'}`}>
     <DynamicTitle title={"Add Service | RateMate"} description={"Add your service"}/>
       <h1 className="font-montserrat text-2xl text-center text-blue-500">
         Add Your Service
