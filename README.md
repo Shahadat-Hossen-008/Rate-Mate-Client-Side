@@ -1,7 +1,7 @@
 <h2>Welcome RateMate website </h2>
 <p>RateMate is a dynamic service information platform where users can explore services, read detailed information, and contribute their review to the collection. This platform utilizes Firebase for authentication, MongoDB for the database, and a collection of modern npm packages to enhance the user experience. </p>
 
-<h4>Live link: [https://nimble-bubblegum-34553f.netlify.app/](https://glistening-pothos-5589d4.netlify.app/)</h4>
+<h4>Live link: [https://glistening-pothos-5589d4.netlify.app/](https://glistening-pothos-5589d4.netlify.app/)</h4>
 
 <h2>Key Features</h2>
 <li>Top Service Display: The homepage showcases the top 6 highest-rated service from the database, fetched dynamically from MongoDB.</li>
